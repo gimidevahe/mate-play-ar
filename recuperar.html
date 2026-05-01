@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login - Mate Play AR</title>
+
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial;
+  display: flex;
+  height: 100vh;
+}
+
+/* LADO IZQUIERDO */
+.left {
+  width: 50%;
+  background: #2b7a94;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.left img {
+  width: 200px;
+}
+
+.left h2 {
+  margin-top: 20px;
+}
+
+/* LADO DERECHO */
+.right {
+  width: 50%;
+  background: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FORMULARIO */
+.container {
+  width: 300px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: #36AE7C;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #2e8f65;
+}
+
+.link {
+  margin-top: 10px;
+  color: #187498;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- IZQUIERDA -->
+<div class="left">
+  <img src="bienvenido.jpg" alt="Bienvenido">
+ 
+  <h2>Mate Play AR</h2>
+</div>
+
+<!-- DERECHA -->
+<div class="right">
+  <div class="container">
+
+    <h2>Iniciar sesión</h2>
+
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="password" placeholder="Contraseña">
+
+    <button onclick="login()">Ingresar</button>
+
+    <div class="link" onclick="irRegistro()">Crear cuenta</div>
+    <div class="link" onclick="irRecuperar()">¿Olvidaste tu contraseña?</div>
+
+  </div>
+</div>
+
+<script>
+
+function login() {
+
+  let usuario = document.getElementById("usuario").value;
+  let password = document.getElementById("password").value;
+
+  fetch("http://127.0.0.1:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ usuario, password })
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "ok") {
+      window.location.href = "inicio.html";
+    } else {
+      alert("Usuario o contraseña incorrectos");
+    }
+  });
+
+}
+
+function irRegistro() {
+  window.location.href = "registro.html";
+}
+
+function irRecuperar() {
+  window.location.href = "recuperar.html";
+}
+
+</script>
+
+</body>
+</html>

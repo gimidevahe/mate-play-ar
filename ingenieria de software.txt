@@ -1,0 +1,671 @@
+pagina 1 bienvenida
+
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+
+<html lang="es"> <!-- Indica que el idioma de la página es español -->
+<head>
+  <meta charset="UTF-8"> <!-- Permite usar caracteres especiales como ñ, acentos -->
+  <title>Mate Play AR - Bienvenida</title> <!-- Título que aparece en la pestaña -->
+
+  <style> <!-- Inicio de estilos CSS -->
+
+    body {
+      margin: 0; /* Quita márgenes por defecto */
+      font-family: Arial, sans-serif; /* Tipo de letra */
+      background: #f4f4f4; /* Color de fondo gris claro */
+      display: flex; /* Activa flexbox */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      height: 100vh; /* Ocupa toda la pantalla */
+    }
+
+    .container {
+      width: 350px; /* Ancho del cuadro */
+      background: white; /* Fondo blanco */
+      padding: 30px; /* Espacio interno */
+      border-radius: 15px; /* Bordes redondeados */
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra */
+      text-align: center; /* Centra el texto */
+    }
+
+    h1 {
+      color: #EB5353; /* Color rojo del título */
+    }
+
+    input {
+      width: 100%; /* Ocupa todo el ancho */
+      padding: 10px; /* Espacio interno */
+      margin: 10px 0; /* Espacio arriba y abajo */
+      border-radius: 8px; /* Bordes redondeados */
+      border: 1px solid #ccc; /* Borde gris */
+    }
+
+    button {
+      width: 100%; /* Botón ocupa todo el ancho */
+      padding: 10px; /* Espacio interno */
+      background: #36AE7C; /* Color verde */
+      color: white; /* Texto blanco */
+      border: none; /* Sin borde */
+      border-radius: 8px; /* Bordes redondeados */
+      cursor: pointer; /* Cursor tipo mano */
+      font-size: 16px; /* Tamaño de letra */
+    }
+
+    button:hover {
+      background: #2e8f65; /* Color al pasar el mouse */
+    }
+
+    .link {
+      margin-top: 10px; /* Espacio arriba */
+      font-size: 14px; /* Tamaño pequeño */
+      color: #187498; /* Color azul */
+      cursor: pointer; /* Se puede hacer click */
+    }
+
+    .error {
+      color: red; /* Texto rojo */
+      margin-top: 10px; /* Espacio arriba */
+      display: none; /* Oculto al inicio */
+    }
+
+    /* Ventana emergente */
+    .modal {
+      display: none; /* Oculta inicialmente */
+      position: fixed; /* Posición fija en pantalla */
+      top: 0; left: 0; /* Desde la esquina superior izquierda */
+      width: 100%; /* Ocupa todo el ancho */
+      height: 100%; /* Ocupa toda la altura */
+      background: rgba(0,0,0,0.5); /* Fondo oscuro transparente */
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+    }
+
+    .modal-content {
+      background: white; /* Fondo blanco */
+      padding: 20px; /* Espacio interno */
+      border-radius: 10px; /* Bordes redondeados */
+      text-align: center; /* Centra texto */
+    }
+
+    .close {
+      margin-top: 10px; /* Espacio arriba */
+      background: #EB5353; /* Botón rojo */
+    }
+
+  </style>
+</head>
+
+<body> <!-- Inicio del contenido visible -->
+
+<div class="container"> <!-- Contenedor principal -->
+  <h1>Bienvenido</h1> <!-- Título -->
+
+  <input type="text" id="usuario" placeholder="Usuario"> <!-- Campo usuario -->
+  <input type="password" id="password" placeholder="Contraseña"> <!-- Campo contraseña -->
+
+  <button onclick="login()">Ingresar</button> <!-- Botón que ejecuta login -->
+
+  <div class="link" onclick="recuperar()">¿Olvidaste tu contraseña?</div> <!-- Link recuperación -->
+
+  <div id="error" class="error">
+    Usuario o contraseña incorrectos <!-- Mensaje de error -->
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="modal" class="modal"> <!-- Fondo del modal -->
+  <div class="modal-content"> <!-- Contenido del modal -->
+    <p id="mensajeModal"></p> <!-- Texto dinámico -->
+    <button class="close" onclick="cerrarModal()">Cerrar</button> <!-- Botón cerrar -->
+  </div>
+</div>
+
+<script> <!-- Inicio de JavaScript -->
+
+  function login() { // Función al presionar "Ingresar"
+
+    const usuario = document.getElementById("usuario").value; // Obtiene usuario
+    const password = document.getElementById("password").value; // Obtiene contraseña
+
+    // Usuario de prueba
+    if (usuario === "admin" && password === "1234") { // Validación
+      alert("Inicio de sesión correcto"); // Mensaje éxito
+    } else {
+      document.getElementById("error").style.display = "block"; // Muestra error
+      mostrarModal("El ID o la contraseña es incorrecto"); // Muestra modal
+    }
+  }
+
+  function recuperar() { // Función recuperación
+    mostrarModal("Función para recuperar contraseña"); // Mensaje
+  }
+
+  function mostrarModal(mensaje) { // Muestra modal
+    document.getElementById("mensajeModal").innerText = mensaje; // Cambia texto
+    document.getElementById("modal").style.display = "flex"; // Hace visible
+  }
+
+  function cerrarModal() { // Cierra modal
+    document.getElementById("modal").style.display = "none"; // Oculta
+  }
+
+</script>
+
+</body>
+</html>
+
+
+pagina 2 recuperar contraseña
+
+<!DOCTYPE html> <!-- Indica que es un documento HTML5 -->
+
+<html lang="es"> <!-- Define el idioma como español -->
+<head>
+<meta charset="UTF-8"> <!-- Permite caracteres especiales -->
+<title>Recuperar contraseña</title> <!-- Título de la pestaña -->
+
+<style> <!-- Inicio de estilos CSS -->
+
+body {
+  font-family: Arial; /* Tipo de letra */
+  background: #f4f4f4; /* Fondo gris claro */
+  display: flex; /* Activa flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la pantalla */
+}
+
+.container {
+  background: white; /* Fondo blanco */
+  padding: 25px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+  width: 350px; /* Ancho del cuadro */
+  text-align: center; /* Centra texto */
+}
+
+input {
+  width: 100%; /* Ocupa todo el ancho */
+  padding: 10px; /* Espacio interno */
+  margin: 8px 0; /* Separación entre inputs */
+  border-radius: 8px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde gris */
+}
+
+.row {
+  display: flex; /* Coloca elementos en fila */
+  gap: 5px; /* Espacio entre elementos */
+}
+
+button {
+  padding: 10px; /* Espacio interno */
+  background: #F9D923; /* Color amarillo */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.modal {
+  display: none; /* Oculto al inicio */
+  position: fixed; /* Posición fija */
+  width: 100%; /* Ocupa todo el ancho */
+  height: 100%; /* Ocupa toda la altura */
+  background: rgba(0,0,0,0.5); /* Fondo oscuro transparente */
+  justify-content: center; /* Centra horizontal */
+  align-items: center; /* Centra vertical */
+}
+
+.modal-content {
+  background: white; /* Fondo blanco */
+  padding: 20px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+</style>
+</head>
+
+<body> <!-- Inicio del contenido visible -->
+
+<div class="container"> <!-- Contenedor principal -->
+  <h2>Restablecer contraseña</h2> <!-- Título -->
+
+  <input type="email" id="correo" placeholder="Correo"> <!-- Campo correo -->
+
+  <div class="row"> <!-- Fila para código y botón -->
+    <input type="text" id="codigo" placeholder="Código"> <!-- Campo código -->
+    <button onclick="enviarCodigo()">Obtener</button> <!-- Botón enviar código -->
+  </div>
+
+  <input type="password" id="nueva" placeholder="Nueva contraseña" disabled> <!-- Nueva contraseña (desactivada) -->
+  <input type="password" id="confirmar" placeholder="Confirmar contraseña" disabled> <!-- Confirmar contraseña -->
+
+  <button onclick="guardar()">Guardar</button> <!-- Botón guardar cambios -->
+</div>
+
+<div id="modal" class="modal"> <!-- Fondo del modal -->
+  <div class="modal-content"> <!-- Contenido del modal -->
+    <p id="mensaje"></p> <!-- Texto dinámico -->
+    <button onclick="cerrarModal()">Cerrar</button> <!-- Botón cerrar -->
+  </div>
+</div>
+
+<script> <!-- Inicio JavaScript -->
+
+let codigoCorrecto = "1234"; // Código simulado
+
+function enviarCodigo() { // Función al presionar "Obtener"
+  mostrarModal("Código enviado (1234)"); // Muestra mensaje
+}
+
+function guardar() { // Función al guardar contraseña
+
+  let codigo = document.getElementById("codigo").value; // Obtiene código ingresado
+  let nueva = document.getElementById("nueva"); // Campo nueva contraseña
+  let confirmar = document.getElementById("confirmar"); // Campo confirmar contraseña
+
+  if (codigo === codigoCorrecto) { // Verifica código
+
+    nueva.disabled = false; // Activa campo nueva contraseña
+    confirmar.disabled = false; // Activa confirmación
+
+    if (nueva.value && nueva.value === confirmar.value) { // Verifica coincidencia
+      mostrarModal("Contraseña actualizada"); // Mensaje éxito
+    }
+
+  } else {
+    mostrarModal("Código incorrecto"); // Mensaje error
+  }
+}
+
+function mostrarModal(msg) { // Función mostrar ventana emergente
+  document.getElementById("mensaje").innerText = msg; // Cambia texto
+  document.getElementById("modal").style.display = "flex"; // Muestra modal
+}
+
+function cerrarModal() { // Función cerrar ventana
+  document.getElementById("modal").style.display = "none"; // Oculta modal
+}
+
+</script>
+
+</body>
+</html>
+
+pagina 3 registro
+
+<!DOCTYPE html> <!-- Indica que es un documento HTML5 -->
+
+<html lang="es"> <!-- Define el idioma como español -->
+<head>
+<meta charset="UTF-8"> <!-- Permite caracteres especiales -->
+<title>Registro</title> <!-- Título de la pestaña -->
+
+<style> <!-- Inicio de estilos CSS -->
+
+body {
+  font-family: Arial; /* Tipo de letra */
+  background: #f4f4f4; /* Fondo gris claro */
+  display: flex; /* Activa flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Ocupa toda la pantalla */
+}
+
+.container {
+  background: white; /* Fondo blanco */
+  padding: 25px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+  width: 350px; /* Ancho del formulario */
+}
+
+input, select {
+  width: 100%; /* Ocupa todo el ancho */
+  padding: 10px; /* Espacio interno */
+  margin: 8px 0; /* Separación entre campos */
+  border-radius: 8px; /* Bordes redondeados */
+  border: 1px solid #ccc; /* Borde gris */
+}
+
+button {
+  width: 100%; /* Botón ocupa todo el ancho */
+  padding: 10px; /* Espacio interno */
+  background: #EB5353; /* Color rojo */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 8px; /* Bordes redondeados */
+}
+
+.modal {
+  display: none; /* Oculto al inicio */
+  position: fixed; /* Posición fija */
+  width: 100%; /* Ocupa toda la pantalla */
+  height: 100%; /* Ocupa toda la pantalla */
+  background: rgba(0,0,0,0.5); /* Fondo oscuro transparente */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+.modal-content {
+  background: white; /* Fondo blanco */
+  padding: 20px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+</style>
+</head>
+
+<body> <!-- Inicio del contenido visible -->
+
+<div class="container"> <!-- Contenedor principal -->
+  <h2>Crear usuario</h2> <!-- Título -->
+
+  <input type="text" id="usuario" placeholder="Usuario"> <!-- Campo usuario -->
+  <input type="email" id="correo" placeholder="Correo"> <!-- Campo correo -->
+  <input type="password" id="password" placeholder="Contraseña"> <!-- Campo contraseña -->
+  <input type="password" id="confirmar" placeholder="Confirmar"> <!-- Confirmación -->
+
+  <button onclick="registrar()">Registrar</button> <!-- Botón registrar -->
+</div>
+
+<div id="modal" class="modal"> <!-- Fondo del modal -->
+  <div class="modal-content"> <!-- Contenido del modal -->
+    <p id="mensaje"></p> <!-- Texto dinámico -->
+    <button onclick="cerrarModal()">Cerrar</button> <!-- Botón cerrar -->
+  </div>
+</div>
+
+<script> <!-- Inicio JavaScript -->
+
+let usuarios = ["admin"]; // Lista de usuarios existentes
+let correos = ["admin@mail.com"]; // Lista de correos existentes
+
+function registrar() { // Función al presionar "Registrar"
+
+  let usuario = document.getElementById("usuario").value; // Obtiene usuario
+  let correo = document.getElementById("correo").value; // Obtiene correo
+  let pass = document.getElementById("password").value; // Obtiene contraseña
+  let confirmar = document.getElementById("confirmar").value; // Confirmación
+
+  // Verifica si el usuario ya existe
+  if (usuarios.includes(usuario)) {
+    mostrarModal("Usuario ya existe"); // Muestra error
+    return; // Detiene ejecución
+  }
+
+  // Verifica si el correo ya está registrado
+  if (correos.includes(correo)) {
+    mostrarModal("Correo ya registrado"); // Muestra error
+    return; // Detiene ejecución
+  }
+
+  // Verifica si las contraseñas coinciden
+  if (pass !== confirmar) {
+    mostrarModal("Contraseñas no coinciden"); // Error
+    return; // Detiene ejecución
+  }
+
+  // Si todo está correcto
+  mostrarModal("Registro exitoso"); // Mensaje éxito
+}
+
+function mostrarModal(msg) { // Función mostrar ventana
+  document.getElementById("mensaje").innerText = msg; // Cambia texto
+  document.getElementById("modal").style.display = "flex"; // Muestra modal
+}
+
+function cerrarModal() { // Función cerrar ventana
+  document.getElementById("modal").style.display = "none"; // Oculta modal
+}
+
+</script>
+
+</body>
+</html>
+
+
+pagina 4 Inicio
+
+<!DOCTYPE html> <!-- Define que es un documento HTML5 -->
+
+<html lang="es"> <!-- Idioma español -->
+<head>
+<meta charset="UTF-8"> <!-- Permite caracteres especiales -->
+<title>Inicio</title> <!-- Título de la pestaña -->
+
+<!-- ICONOS -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<!-- Importa los iconos de Google -->
+
+<style> <!-- Inicio de estilos CSS -->
+
+.buscador {
+  position: relative; /* Permite posicionar el icono dentro */
+  display: flex; /* Usa flexbox */
+  justify-content: center; /* Centra horizontalmente */
+  margin: 10px; /* Espacio externo */
+}
+
+.buscador input {
+  width: 80%; /* Ancho del input */
+  padding: 10px 10px 10px 40px; /* Espacio para el icono */
+  border-radius: 20px; /* Bordes redondeados */
+  border: 2px solid #187498; /* Borde azul */
+}
+
+.icono-buscar {
+  position: absolute; /* Posición sobre el input */
+  left: 12%; /* Ubicación horizontal */
+  top: 50%; /* Centrado vertical */
+  transform: translateY(-50%); /* Ajuste exacto */
+  color: gray; /* Color del icono */
+}
+
+body {
+  margin: 0; /* Quita márgenes */
+  font-family: Arial; /* Fuente */
+}
+
+/* HEADER */
+.header {
+  display: flex; /* Flexbox */
+  justify-content: space-between; /* Espacio entre elementos */
+  padding: 15px; /* Espacio interno */
+}
+
+/* BOTONES ICONO */
+.icon-btn {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  cursor: pointer; /* Cursor tipo mano */
+  font-size: 28px; /* Tamaño icono */
+}
+
+/* BUSCADOR (segunda definición, sobrescribe) */
+.buscador {
+  position: relative;  
+  display: flex;
+  justify-content: center;
+  margin: 10px;
+}
+
+.buscador input {
+  width: 80%;
+  padding: 10px 40px 10px 10px; /* Espacio a la derecha */
+  border-radius: 20px;
+  border: 2px solid #187498;
+}
+
+.icono-buscar {
+  position: absolute;
+  left: 87%; /* Coloca icono a la derecha */
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+  cursor: pointer; /* Clickable */
+}
+
+/* CONTENIDO */
+.contenido {
+  padding: 20px; /* Espacio interno */
+  height: 60vh; /* Altura del área */
+}
+
+/* NAV INFERIOR */
+.nav {
+  position: fixed; /* Fijo abajo */
+  bottom: 0; /* Pegado al fondo */
+  width: 100%; /* Ocupa todo */
+  background: #eee; /* Fondo gris */
+  display: flex; /* Flexbox */
+  justify-content: space-around; /* Espaciado uniforme */
+  padding: 8px 0; /* Espacio vertical */
+  border-top: 1px solid #ccc; /* Línea superior */
+}
+
+.nav button {
+  background: none; /* Sin fondo */
+  border: none; /* Sin borde */
+  text-align: center; /* Centra texto */
+  cursor: pointer; /* Mano */
+  font-size: 12px; /* Texto pequeño */
+}
+
+.nav .material-icons {
+  display: block; /* Icono arriba */
+  font-size: 26px; /* Tamaño icono */
+}
+
+/* MODAL */
+.modal {
+  display: none; /* Oculto */
+  position: fixed; /* Fijo */
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5); /* Fondo oscuro */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+}
+
+.modal-content {
+  background: white; /* Fondo blanco */
+  padding: 20px; /* Espacio interno */
+  border-radius: 10px; /* Bordes redondeados */
+}
+
+</style>
+</head>
+
+<body> <!-- Inicio del contenido -->
+
+<!-- HEADER -->
+<div class="header">
+  <button class="icon-btn" onclick="menu()"> <!-- Botón menú -->
+    <span class="material-icons">menu</span> <!-- Icono menú -->
+  </button>
+
+  <button class="icon-btn" onclick="noti()"> <!-- Botón notificaciones -->
+    <span class="material-icons">notifications</span> <!-- Icono campana -->
+  </button>
+</div>
+
+<!-- BUSCADOR -->
+<div class="buscador">
+  <span class="material-icons icono-buscar">search</span> <!-- Icono lupa -->
+  <input type="text" onkeyup="buscar(this.value)" placeholder="Unidades...">
+  <!-- Campo de búsqueda -->
+</div>
+
+<!-- CONTENIDO -->
+<div class="contenido" id="contenido">
+  Escribe para buscar... <!-- Texto inicial -->
+</div>
+
+<!-- NAV INFERIOR -->
+<div class="nav">
+
+  <button onclick="ir('Inicio')">
+    <span class="material-icons">home</span>
+    Inicio
+  </button>
+
+  <button onclick="ir('Perfil')">
+    <span class="material-icons">person</span>
+    Perfil
+  </button>
+
+  <button onclick="ir('Aprender')">
+    <span class="material-icons">calculate</span>
+    Aprender
+  </button>
+
+  <button onclick="ir('Torneo')">
+    <span class="material-icons">emoji_events</span>
+    Torneo
+  </button>
+
+  <button onclick="ir('Avance')">
+    <span class="material-icons">bar_chart</span>
+    Avance
+  </button>
+
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <p id="mensaje"></p> <!-- Mensaje dinámico -->
+    <button onclick="cerrarModal()">Cerrar</button>
+  </div>
+</div>
+
+<script> <!-- Inicio JavaScript -->
+
+function buscar(texto) {
+  // Cambia el contenido con lo que escribe el usuario
+  document.getElementById("contenido").innerHTML =
+    "Buscando: " + texto;
+}
+
+function menu() {
+  alert("Menú abierto"); // Muestra alerta
+}
+
+function noti() {
+  alert("Entraste al notificaciones"); // Muestra alerta
+}
+
+function ir(seccion) {
+  // Detecta qué botón se presionó
+
+  if (seccion === "Inicio") {
+    alert("Entraste a Inicio 🏠");
+  } 
+  else if (seccion === "Perfil") {
+    alert("Entraste a Perfil 👤");
+  } 
+  else if (seccion === "Aprender") {
+    alert("Entraste a Aprender ➗");
+  } 
+  else if (seccion === "Torneo") {
+    alert("Entraste a Torneo 🏆");
+  } 
+  else if (seccion === "Avance") {
+    alert("Entraste a Avance 📊");
+  }
+}
+
+function mostrarModal(msg) {
+  // Cambia el mensaje del modal
+  document.getElementById("mensaje").innerText = msg;
+  document.getElementById("modal").style.display = "flex";
+}
+
+function cerrarModal() {
+  // Oculta el modal
+  document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
+
+
