@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inicio</title>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f4f4f4;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 15px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.logo img {
+  width: 220px;
+}
+
+/* BUSCADOR */
+.buscador {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.buscador input {
+  width: 80%;
+  padding: 12px 45px 12px 15px;
+  border-radius: 25px;
+  border: 2px solid #187498;
+  font-size: 16px;
+}
+
+.icono-buscar {
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: gray;
+}
+
+/* TEXTO */
+.texto {
+  margin-left: 20px;
+}
+
+/* NAV */
+.nav {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #eee;
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.nav button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav .material-icons {
+  display: block;
+  font-size: 26px;
+}
+
+.activo {
+  color: blue;
+}
+
+/* ===== MENÚ LATERAL ===== */
+.menu {
+  position: fixed;
+  top: 0;
+  left: -250px; /* oculto */
+  width: 250px;
+  height: 100%;
+  background: white;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  transition: 0.3s;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.menu h3 {
+  margin-top: 0;
+}
+
+.menu button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  border: none;
+  background: #EB5353;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* FONDO OSCURO */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: none;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <button class="icon-btn" onclick="abrirMenu()">
+    <span class="material-icons">menu</span>
+  </button>
+
+  <button class="icon-btn">
+    <span class="material-icons">notifications</span>
+  </button>
+</div>
+
+<!-- MENÚ LATERAL -->
+<div id="menu" class="menu">
+  <h3>Opciones</h3>
+  <button onclick="logout()">Cerrar sesión</button>
+</div>
+
+<!-- FONDO OSCURO -->
+<div id="overlay" class="overlay" onclick="cerrarMenu()"></div>
+
+<!-- LOGO -->
+<div class="logo">
+  <img src="mate play.jpg" alt="Mate Play AR" width="250px">
+</div>
+
+<!-- BUSCADOR -->
+<div class="buscador">
+  <input type="text" placeholder="Unidades...">
+  <span class="material-icons icono-buscar">search</span>
+</div>
+
+<!-- TEXTO -->
+<div class="texto">
+  Escribe para buscar...
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="activo">
+    <span class="material-icons">home</span>
+    Inicio
+  </button>
+
+  <button>
+    <span class="material-icons">person</span>
+    Perfil
+  </button>
+
+  <button>
+    <span class="material-icons">calculate</span>
+    Aprender
+  </button>
+
+  <button>
+    <span class="material-icons">emoji_events</span>
+    Torneo
+  </button>
+
+  <button>
+    <span class="material-icons">bar_chart</span>
+    Avance
+  </button>
+</div>
+
+<script>
+
+function abrirMenu() {
+  document.getElementById("menu").style.left = "0";
+  document.getElementById("overlay").style.display = "block";
+}
+
+function cerrarMenu() {
+  document.getElementById("menu").style.left = "-250px";
+  document.getElementById("overlay").style.display = "none";
+}
+
+function logout() {
+  window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>
